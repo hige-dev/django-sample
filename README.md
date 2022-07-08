@@ -1,3 +1,5 @@
+docker-compose up -d
+
 pip install django
 pip install djangorestframework
 pip install django-filter
