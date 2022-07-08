@@ -1,12 +1,20 @@
-docker-compose up -d
+### pip install
+- pip install django
+- pip install djangorestframework
+- pip install django-filter
 
-pip install django
-pip install djangorestframework
-pip install django-filter
 
-python manage.py makemigrations
-python manage.py migrate
+### postgres起動
 
-python manage.py createsuperuser
+- docker-compose up -d
 
-python manage.py runserver
+### migration
+
+- python manage.py makemigrations
+- python manage.py migrate
+
+### 起動(localhost:8000)
+- python manage.py runserver
+
+### create superuser
+- python manage.py createsuperuser
