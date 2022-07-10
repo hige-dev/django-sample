@@ -1,3 +1,8 @@
+### version
+
+- python: 3.8.10
+- django: 4.0.6
+
 ### pip install
 - pip install django
 - pip install djangorestframework
@@ -18,3 +23,8 @@
 
 ### create superuser
 - python manage.py createsuperuser
+
+### run batch
+
+- python manage.py fetch_title 1 2
+  - データがある場合、引数のIDのtitleをprintする
