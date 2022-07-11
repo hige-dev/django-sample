@@ -29,7 +29,7 @@ class Migration(migrations.Migration):
                 ('created_at', models.DateTimeField(auto_now_add=True)),
                 ('updated_at', models.DateTimeField(auto_now=True)),
                 ('status', models.CharField(choices=[('draft', '下書き'), ('public', '公開中')], default='draft', max_length=8)),
-                ('author', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='entries', to='blog.user')),
+                ('author', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='entries', to='apps.blog.user')),
             ],
         ),
     ]

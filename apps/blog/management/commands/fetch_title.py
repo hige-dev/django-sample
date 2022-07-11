@@ -1,5 +1,5 @@
 from django.core.management.base import BaseCommand
-from blog.models import Entry
+from apps.blog.models import Entry
 
 class Command(BaseCommand):
     help = 'test command.'
