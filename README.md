@@ -26,5 +26,8 @@
 
 ### run batch
 
-- python manage.py fetch_title 1 2
+- python manage.py fetch_title 1 2 --settings=config.env.development
   - データがある場合、引数のIDのtitleをprintする
+
+- python manage.py export_entries --settings=config.env.development
+  - データをcsvに出力
