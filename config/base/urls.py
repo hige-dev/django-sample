@@ -6,6 +6,6 @@ from apps.blog.urls import router as blog_router
 
 urlpatterns = [
     path(r'admin/', admin.site.urls),
-    # blog.urlsをincludeする
     path(r'api/', include(blog_router.urls)),
+    path(r'api/', include('apps.blog.urls')),
 ]
