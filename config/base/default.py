@@ -22,8 +22,6 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = 'django-insecure-ucnzs_$tuv&!5yn3ku(3h97c$hp930a+zpwj@g$h!f-3+n%&1u'
 
-# SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
 
 ALLOWED_HOSTS = []
 
@@ -72,20 +70,6 @@ TEMPLATES = [
 WSGI_APPLICATION = 'config.wsgi.application'
 
 
-# Database
-# https://docs.djangoproject.com/en/4.0/ref/settings/#databases
-
-DATABASES = {
-     'default': {
-         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-         'NAME': 'mydatabase',
-         'USER': 'djangouser',
-         'PASSWORD': 'djangopassword',
-         'HOST': 'localhost',
-         'PORT': '5432',
-     }
- }
-
 # Password validation
 # https://docs.djangoproject.com/en/4.0/ref/settings/#auth-password-validators
 
@@ -110,7 +94,7 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = 'en-us'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'Asia/Tokyo'
 
 USE_I18N = True
 
@@ -131,4 +115,53 @@ REST_FRAMEWORK = {
     'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.LimitOffsetPagination',
     'PAGE_SIZE': 2,
     'DEFAULT_FILTER_BACKENDS': ['django_filters.rest_framework.DjangoFilterBackend'],
+}
+
+
+LOGGING = {
+    "version": 1,
+    "disable_existing_loggers": False,
+    "formatters": {
+        "standard": {
+            "format": "[%(asctime)s] %(levelname)s [%(name)s:%(lineno)s] %(process)d - %(thread)d : %(message)s",
+            "datefmt": "%Y-%m-%d %H:%M:%S"
+        },
+        "json_formatter": {
+            "()": structlog.stdlib.ProcessorFormatter,
+            "processor": structlog.processors.JSONRenderer(),
+        },
+    },
+    "handlers": {
+        "console": {
+            "class": "logging.StreamHandler",
+            "formatter": "standard",
+        },
+        "django_file": {
+            "class": "logging.handlers.WatchedFileHandler",
+            "filename": "logs/django.log",
+            "formatter": "standard",
+        },
+        "json_file": {
+            "class": "logging.handlers.WatchedFileHandler",
+            "filename": "logs/access.json",
+            "formatter": "json_formatter",
+        },
+    },
+    "loggers": {
+        "django": {
+            "handlers": ["console", "django_file"],
+            "level": "INFO",
+            "propagate": True,
+        },
+        "apps": {
+            "handlers": ["console", "django_file"],
+            "level": "DEBUG",
+            "propagate": False,
+        },
+        "django_structlog": {
+            "handlers": ["console", "django_file", "json_file"],
+            "level": "INFO",
+            'propagate': False,
+        },
+    }
 }
