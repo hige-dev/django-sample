@@ -15,14 +15,14 @@
 
 ### migration
 
-- python manage.py makemigrations
-- python manage.py migrate
+- python manage.py makemigrations --settings=config.env.development
+- python manage.py migrate --settings=config.env.development
 
 ### 起動(localhost:8000)
-- python manage.py runserver
+- python manage.py runserver --settings=config.env.development
 
 ### create superuser
-- python manage.py createsuperuser
+- python manage.py createsuperuser --settings=config.env.development
 
 ### run batch
 
