@@ -3,7 +3,14 @@
 - python: 3.8.10
 - django: 4.0.6
 
+### venv
+
+- cd django-sample/
+- python -m venv venv
+- source venv/bin/activate
+
 ### pip install
+
 - pip install django
 - pip install djangorestframework
 - pip install django-filter
