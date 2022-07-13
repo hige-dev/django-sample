@@ -24,6 +24,13 @@
 ### create superuser
 - python manage.py createsuperuser --settings=config.env.development
 
+### api example
+
+- curl -XPOST localhost:8000/api/users/ -H 'Content-Type: application/json' -d '{"name": "asd", "mail": "asd@asd.com"}'
+- curl localhost:8000/api/entires/
+  - jqを入れるとresponseのjsonが整形されて見やすい
+  - ex) curl localhost:8000/api/entires/ | jq
+
 ### run batch
 
 - python manage.py fetch_title 1 2 --settings=config.env.development
